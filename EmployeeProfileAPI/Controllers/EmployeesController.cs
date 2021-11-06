@@ -27,7 +27,7 @@ namespace EmployeeProfileAPI.Controllers
         public async Task<ActionResult<IEnumerable<EmployeeNameDTO>>> GetEmployeesNames()
         {
             return await _context.Employees
-                .Select(x=>new EmployeeNameDTO { Id=x.Id, LastName=x.LastName, FirstName=x.FirstName})
+                .Select(x=>new EmployeeNameDTO { Id=x.Id, LastName=x.LastName, FirstName=x.FirstName })
                 .ToListAsync();
         }
 
@@ -42,7 +42,7 @@ namespace EmployeeProfileAPI.Controllers
                     LastName = g.LastName, 
                     FirstName = g.FirstName,
                     City=g.City,
-                    GenderName=g.Gender.GenderName})
+                    GenderId=g.GenderId})
                 .FirstOrDefaultAsync();
 
             if (employee == null)

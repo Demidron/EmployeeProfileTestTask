@@ -12,6 +12,5 @@ namespace EmployeeProfileAPI.ModelsDTO
         public string LastName { get; set; }
         public string City { get; set; }
         public int GenderId { get; set; }
-        public string GenderName { get; set; }
     }
 }
