@@ -1,1 +1,25 @@
-<p>list-employees works!</p>
+
+    <div style="height: 65px;">
+        <div style="position: relative;left: 16px;">List of employees</div>
+        <div style="display: flex;justify-content: space-between;margin: 10px;">
+            <jqxButton #button (click)="addEmp()" >
+                Add
+            </jqxButton>
+            <jqxButton #button (click)="editEmp()"  >
+                Edit
+            </jqxButton>
+            <jqxButton #button (click)="deleteEmp()" >
+                Delete
+            </jqxButton>
+        </div>
+    </div>
+
+    <jqxListBox [theme]="'material'" #jqxListBox
+    (onSelect)="selectLB($event)"
+
+    [source]="empService.empNames"
+    [displayMember]="'fullName'"
+    [valueMember]="'id'"
+    [width]='"100%"' [height]='"535px"'>
+    </jqxListBox>
+

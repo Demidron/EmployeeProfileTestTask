@@ -1,1 +1,22 @@
-<p>employee-details works!</p>
+<div style="height: 65px;width: 100%;position:relative;">
+  <div style="position: absolute;bottom: 10px;left: 10px;">
+      Employee details
+  </div>
+</div>
+<fieldset style="width: 100%; height: 100%; border: 1px solid lightgrey;">
+
+  <div class="margin10" style="float: left; width: 40%;">
+    <div>
+      <b>First name:</b>{{empService.empInfo.firstName}}
+    </div>
+    <div>  
+      <b>Last name:</b> {{empService.empInfo.lastName}}
+    </div>
+    <div>  
+      <b>Gender:</b> {{empService.empInfo.genderName}}
+    </div>
+    <div>
+      <b>City:</b> {{empService.empInfo.city}}
+    </div>
+  </div>
+</fieldset>

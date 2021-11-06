@@ -1,14 +1,14 @@
-<p>employees-info works!</p>
-<app-list-employees></app-list-employees>
-<app-employee-details></app-employee-details>
-
-<table>
-    <tr>
-        <td>
+<div  id="jqxWidget" #jqxWidget>
+    <jqxSplitter [theme]="'material'" [width]="getWidth()" [height]='600' [panels]='mainSplitterPanels'>
+        <div>
+            
             <app-list-employees></app-list-employees>
-        </td>
-        <td>
+        </div>
+        <div>
             <app-employee-details></app-employee-details>
-        </td>
-    </tr>
-</table>
+        </div>
+    </jqxSplitter>
+    
+
+    <router-outlet></router-outlet>
+</div>
