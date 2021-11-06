@@ -5,8 +5,15 @@ import { EmployeeDetailsComponent } from './pages/employees-info/employee-detail
 import { EmployeesInfoComponent } from './pages/employees-info/employees-info.component';
 import { RouterModule } from '@angular/router';
 
-
-
+import { jqxListBoxModule } from 'jqwidgets-ng/jqxlistbox';
+import { jqxTextAreaModule }    from 'jqwidgets-ng/jqxtextarea';
+import { jqxSplitterModule } from 'jqwidgets-ng/jqxsplitter';
+import { jqxPanelModule } from 'jqwidgets-ng/jqxpanel';
+import { jqxButtonModule }   from 'jqwidgets-ng/jqxbuttons';
+import { FormsModule } from "@angular/forms";
+import { jqxFormModule } from 'jqwidgets-ng/jqxform';
+import { HttpClientModule } from '@angular/common/http';
+import { ChangeEmployeeGuard } from './guards/change-employee.guard';
 @NgModule({
   declarations: [
     ListEmployeesComponent,
@@ -15,11 +22,29 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    jqxListBoxModule,
+    jqxTextAreaModule,
+    jqxSplitterModule,
+    jqxPanelModule,
+    jqxButtonModule,
+    FormsModule,
+    jqxFormModule,
+    HttpClientModule,
     RouterModule.forChild([
+      {path:'',pathMatch:'full',redirectTo:'employees'},
       {
-        path: '',
-        component:EmployeesInfoComponent
-      }
+        path: 'employees',
+        component:EmployeesInfoComponent,
+        children:[
+          {
+            path: 'emp-form',
+            pathMatch: 'full',
+            canLoad:[ChangeEmployeeGuard],
+            loadChildren: () => import('./edit-employee/edit-employee.module')
+              .then(module => module.EditEmployeeModule)
+          },
+        ]
+      },
     ])
   ]
 })
